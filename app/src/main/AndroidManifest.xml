@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Focus_timer_poc"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.FocusTimerActivity"
+            android:name=".Task.presentation.FocusTimerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

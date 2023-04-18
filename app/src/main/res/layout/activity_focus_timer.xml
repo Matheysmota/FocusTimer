@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.FocusTimerActivity">
+    tools:context=".Task.presentation.FocusTimerActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_focus_timer"
@@ -79,6 +79,5 @@
         app:layout_constraintTop_toTopOf="@id/progress_bar_countDown"
         app:layout_constraintBottom_toBottomOf="@id/progress_bar_countDown"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
