@@ -7,17 +7,17 @@ import androidx.room.Query
 import androidx.room.OnConflictStrategy
 import com.example.focus_timer_poc.Task.data.entity.JobEntity
 
-interface TaskDao {
+interface JobDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addTask(task: JobEntity)
+    suspend fun addJob(job: JobEntity)
 
     @Delete
-    suspend fun deleteTask(task: JobEntity)
+    suspend fun deleteJob(job: JobEntity)
 
     @Update
-    suspend fun editTask(task: JobEntity): JobEntity
+    suspend fun editJob(job: JobEntity): JobEntity
 
-    @Query("SELECT * FROM taskEntity")
-    suspend fun loadTasks(): List<JobEntity>
+    @Query("SELECT * FROM JobEntity")
+    suspend fun loadJobs(): List<JobEntity>
 }

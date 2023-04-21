@@ -7,20 +7,20 @@ import androidx.room.RoomDatabase
 import com.example.focus_timer_poc.Task.data.entity.JobEntity
 
 @Database(entities = [JobEntity::class], version = 1)
-abstract class TaskDataBase : RoomDatabase() {
+abstract class JobDataBase : RoomDatabase() {
 
-    abstract fun taskDao(): TaskDao
+    abstract fun JobDao(): JobDao
 
     companion object {
-        private var INSTANCE: TaskDataBase? = null
+        private var INSTANCE: JobDataBase? = null
 
-        fun getInstance(context: Context): TaskDataBase? {
+        fun getInstance(context: Context): JobDataBase? {
             if (INSTANCE == null) {
-                synchronized(TaskDataBase::class) {
+                synchronized(JobDataBase::class) {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
-                        TaskDataBase::class.java,
-                        "task_db"
+                        JobDataBase::class.java,
+                        "Job_db"
                     ).build()
                 }
             }
