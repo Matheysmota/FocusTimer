@@ -1,4 +1,4 @@
-package com.example.focus_timer_poc.Task.presentation
+package com.example.focus_timer_poc.Task.presentation.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

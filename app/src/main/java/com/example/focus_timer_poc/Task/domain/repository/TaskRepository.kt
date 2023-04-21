@@ -2,10 +2,12 @@ package com.example.focus_timer_poc.Task.domain.repository
 
 import com.example.focus_timer_poc.Task.domain.model.Job
 
-interface TaskRepository {
-    suspend fun addTask(task: Job)
+interface JobRepository {
+    suspend fun addJob(job: Job)
 
-    suspend fun removeTask()
+    suspend fun removeJob(job: Job)
 
-    suspend fun editTask()
+    suspend fun editJob(job: Job): Job
+
+    suspend fun loadJobs(): List<Job>
 }
