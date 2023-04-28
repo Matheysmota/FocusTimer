@@ -5,26 +5,30 @@ import com.example.focus_timer_poc.Task.data.entity.JobEntity
 import com.example.focus_timer_poc.Task.data.mapper.toJobEntity
 import com.example.focus_timer_poc.Task.domain.model.Job
 import com.example.focus_timer_poc.Task.domain.repository.JobRepository
+import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 
 
-class JobRepositoryImpl(private val jobDao: JobDao): JobRepository {
+class JobRepositoryImpl(private val jobDao: JobDao) : JobRepository {
 
-    override suspend fun addJob(job: Job) =
+    override fun addJob(job: Job): Completable =
         jobDao.addJob(job.toJobEntity())
 
 
-    override suspend fun loadJobs(): List<Job> =
-        jobDao.loadJobs().map { jobEntity ->
+    override fun loadJobs(): Single<List<Job>> {
+        val jobList = jobDao.loadJobs().map { jobEntity ->
             jobEntity.toDomain()
         }
+        return Single.just(jobList)
+    }
 
 
-    override suspend fun removeJob(job: Job) =
+    override fun removeJob(job: Job): Completable =
         jobDao.deleteJob(job.toJobEntity())
 
 
-    override suspend fun editJob(job: Job): Job {
+    override fun editJob(job: Job): Single<Job> {
         val myJob = job.toJobEntity()
-        return jobDao.editJob(myJob).toDomain()
+        return Single.just(jobDao.editJob(myJob).toDomain())
     }
 }

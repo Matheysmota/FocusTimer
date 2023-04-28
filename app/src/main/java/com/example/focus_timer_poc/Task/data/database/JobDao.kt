@@ -6,18 +6,19 @@ import androidx.room.Update
 import androidx.room.Query
 import androidx.room.OnConflictStrategy
 import com.example.focus_timer_poc.Task.data.entity.JobEntity
+import io.reactivex.rxjava3.core.Completable
 
 interface JobDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    suspend fun addJob(job: JobEntity)
+    fun addJob(job: JobEntity): Completable
 
     @Delete
-    suspend fun deleteJob(job: JobEntity)
+    fun deleteJob(job: JobEntity): Completable
 
     @Update
-    suspend fun editJob(job: JobEntity): JobEntity
+    fun editJob(job: JobEntity): JobEntity
 
     @Query("SELECT * FROM JobEntity")
-    suspend fun loadJobs(): List<JobEntity>
+    fun loadJobs(): List<JobEntity>
 }
